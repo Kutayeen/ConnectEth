@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     myEditor.putBoolean("Created?", true);
                     Log.w("", "Created new account");
                     myEditor.commit();
-                    System.out.println("IN: " + credentials.getEcKeyPair().getPrivateKey());
+                    System.out.println("IN: " + credentials.getEcKeyPair().getPrivateKey().toString(16));
 
                 } catch (InvalidAlgorithmParameterException e) {
                     e.printStackTrace();
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     ECKeyPair exKey2 = ECKeyPair.create(new BigInteger(pass));
                     Credentials credentials2 = Credentials.create(exKey2);
                     String Address2 = credentials2.getAddress();
-                    System.out.println("OUT: "+credentials2.getEcKeyPair().getPrivateKey());
+                    System.out.println("OUT: "+credentials2.getEcKeyPair().getPrivateKey().toString(16));
                     ethGetBalance = web3.ethGetBalance(Address2, DefaultBlockParameterName.LATEST).sendAsync().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
