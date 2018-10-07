@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                     credentials = Credentials.create(Wallet.decrypt(seed, wallet));
                     //create unique private key
                     BigInteger private_big = credentials.getEcKeyPair().getPrivateKey();
-
                     String key_private = private_big + "";
                     String key = passField.getText().toString();
                     // Write
