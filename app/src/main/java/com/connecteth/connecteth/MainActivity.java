@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     String key_private = private_big + "";
                     String key = passField.getText().toString();
                     // Write
-                    myEditor.putString(encrypt(key), encrypt(key_private));
+                    myEditor.putString("key", encrypt(key_private));
                     myEditor.apply(); // Or commit if targeting old devices
                     myEditor.putBoolean("Created?", true);
                     Log.w("", "Created new account");
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     String key2 = passField.getText().toString();
                     // Read
-                    String passEncrypted = myPreferences.getString(encrypt(key2), encrypt("default"));
+                    String passEncrypted = myPreferences.getString("key", encrypt("default"));
                     String pass = decrypt(passEncrypted);
                     ECKeyPair exKey2 = ECKeyPair.create(new BigInteger(pass));
                     Credentials credentials2 = Credentials.create(exKey2);
